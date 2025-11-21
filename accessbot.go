@@ -4,6 +4,7 @@ import (
     "strconv"
 	"os"
     "log"
+	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/joho/godotenv" // For work getenv
 )
 
@@ -37,4 +38,25 @@ func GetStatusCheck() bool{
 	parse,err:=strconv.ParseBool(statusCheckAccess)
 	if err!=nil { log.Panicf("[PANIC AccessCode]%s.",err) }
 	return parse
+}
+
+// CheckUserAccess request and check access code.
+func CheckUserAccess(bot *tgbotapi.BotAPI,text string,chatID,ownerID,accessCode int64) bool {
+	// Realization
+	if ownerID == chatID {
+		log.Println("[INFO checkUserAccess]🔑 Good access, user admin.']")
+		return true
+	} else {
+		if text!=strconv.FormatInt(accessCode,10) { //Check access code
+			bot.Send(tgbotapi.NewMessage(chatID, "Извините, бот доступен только владельцу или по коду доступа 🔒"))
+			bot.Send(tgbotapi.NewMessage(chatID, "🔑 Введите код доступа:"))
+			log.Println("[INFO checkUserAccess]🔑 Bad check code.]")
+			return false
+		} else {
+			bot.Send(tgbotapi.NewMessage(chatID, "Good enter code."))
+			log.Println("[INFO checkUserAccess]🔑 Good enter code.]")
+			return true
+		}
+	}
+	return false
 }
