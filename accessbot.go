@@ -4,7 +4,6 @@ import (
     "strconv"
 	"os"
     "log"
-	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/joho/godotenv" // For work getenv
 )
 
