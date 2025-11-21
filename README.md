@@ -3,7 +3,7 @@ Welcome, this is my pet-project library fot go.
 Example .env defailt:
 
 ```
--TOKEN_API
+TOKEN_API
 ACCESS_CODE
 ALLOWED_USER_ID
 STATUS_DEBUG=(true/false)
