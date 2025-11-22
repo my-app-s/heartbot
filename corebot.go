@@ -7,31 +7,31 @@ import (
 	"github.com/joho/godotenv" // For work getenv
 )
 
-// GlobalHeartBot get bot by token without local file env.
+// GlobalHeartBot get bot by token from scope env.
 func GlobalHeartBot() *tgbotapi.BotAPI{
 	// Realization
-	token:=os.Getenv("TOKEN_API")  // Get TOKEN_API_BotTG_GetVacanciesTBot
+	token:=os.Getenv("TOKEN_API")
 	if token=="" { log.Fatal("[FATAL GlobalHeartBot]TOKEN is not found.") }
 
-	bot, err:=tgbotapi.NewBotAPI(token) // Create BotTG
-	if err != nil { log.Panicf("[PANIC GlobalHeartBot]TOKEN error: %s.",err) }
+	bot, err:=tgbotapi.NewBotAPI(token)
+	if err != nil { log.Panicf("[PANIC GlobalHeartBot]TOKEN error: %v.",err) }
 
 	token="*****" // Token clear
 
 	return bot
 }
 
-// LocalHeartBot get bot by token with local file env.
+// LocalHeartBot get bot by token from local file env.
 func LocalHeartBot() *tgbotapi.BotAPI{
 	// Realization
-	err:=godotenv.Load() // Initialization env local file
+	err:=godotenv.Load()
 	if err!=nil { log.Fatal("[FATAL LocalHeartBot]Not .env file.") }
 
-	token:=os.Getenv("TOKEN_API")  // Get TOKEN_API_BotTG_GetVacanciesTBot
+	token:=os.Getenv("TOKEN_API")
 	if token=="" { log.Fatal("[FATAL LocalHeartBot]TOKEN is not found.") }
 
-	bot, err:=tgbotapi.NewBotAPI(token) // Create BotTG
-	if err != nil { log.Panicf("[PANIC LocalHeartBot]TOKEN error: %s.",err) }
+	bot, err:=tgbotapi.NewBotAPI(token)
+	if err != nil { log.Panicf("[PANIC LocalHeartBot]TOKEN error: %v.",err) }
 
 	token="*****" // Token clear
 

@@ -14,13 +14,17 @@ func SetDebugBot(bot *tgbotapi.BotAPI) {
 	err:=godotenv.Load() // Initialization env file
 	if err!=nil { log.Fatal("[FATAL LocalHeartBot]Not .env file.") }
 
-	statusDefault:=false // Default status false
+	status:=false // Default status false
 	if	statusFromEnv:=os.Getenv("STATUS_DEBUG");statusFromEnv!="" {
-		parse,err:=strconv.ParseBool(statusFromEnv)
-		if err!=nil { log.Printf("[WARNING SetDebugBot]Invalid STATUS_DEBUG value: %s, error: %s.",parse,err) } else {
-			statusDefault=parse
-			bot.Debug=statusDefault
-			log.Printf("[INFO SetDebugBot]Status debug set: %t.",statusDefault)
+		parsed,err:=strconv.ParseBool(statusFromEnv)
+		if err!=nil {
+			log.Printf("[WARNING SetDebugBot]Invalid STATUS_DEBUG value: %q, error: %v.",statusFromEnv,err)
+		} else {
+			status=parsed
+			bot.Debug=status
+			log.Printf("[INFO SetDebugBot]Status debug set: %t.",status)
 		}
-	} else { log.Printf("[INFO SetDebugBot]Status debug set default: %t.",statusDefault) }
+	} else {
+		log.Printf("[INFO SetDebugBot]Status debug set default: %t.",status)
+	}
 }
