@@ -7,6 +7,13 @@ import (
 	"github.com/joho/godotenv" // For work getenv
 )
 
+func init() {
+	if FileExists(".env") {
+		err:=godotenv.Load() // Initialization env file
+		if err!=nil { log.Fatal("[FATAL Initialization package heartbot/corebot]Not .env file.") }
+	}
+}
+
 // GlobalHeartBot get bot by token from scope env.
 func GlobalHeartBot() *tgbotapi.BotAPI{
 	// Realization
@@ -24,9 +31,6 @@ func GlobalHeartBot() *tgbotapi.BotAPI{
 // LocalHeartBot get bot by token from local file env.
 func LocalHeartBot() *tgbotapi.BotAPI{
 	// Realization
-	err:=godotenv.Load()
-	if err!=nil { log.Fatal("[FATAL LocalHeartBot]Not .env file.") }
-
 	token:=os.Getenv("TOKEN_API")
 	if token=="" { log.Fatal("[FATAL LocalHeartBot]TOKEN is not found.") }
 
