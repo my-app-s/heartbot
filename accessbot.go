@@ -54,11 +54,9 @@ func CheckUserAccess(bot *tgbotapi.BotAPI,text string,chatID,ownerID,accessCode 
 				"(Извините, бот доступен только владельцу или по коду доступа 🔒.)"))
 			bot.Send(tgbotapi.NewMessage(chatID,
 				"Please enter your access code. 🔑(🔑 Введите код доступа):"))
-			log.Println("[INFO checkUserAccess]🔑 Bad check code.]")
 			return false
 		} else {
 			bot.Send(tgbotapi.NewMessage(chatID, "Good enter code."))
-			log.Println("[INFO checkUserAccess]🔑 Good enter code.]")
 			return true
 		}
 	}
