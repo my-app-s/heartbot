@@ -1,8 +1,6 @@
 package heartbot
 
-import (
-	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
-)
+import "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 
 // CreateUpdatesChannel create channel updates.
 func CreateUpdatesChannel(bot *tgbotapi.BotAPI) tgbotapi.UpdatesChannel {
