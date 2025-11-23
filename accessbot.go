@@ -8,9 +8,21 @@ import (
 	"github.com/joho/godotenv" // For work getenv
 )
 
+// FileExists check exists file .env.
+func FileExists(filename string) bool {
+	// Realization
+	info, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return err == nil
+}
+
 func init() {
-	err:=godotenv.Load() // Initialization env file
-	if err!=nil { log.Fatal("[FATAL Initialization package heartbot/accessbot]Not .env file.") }
+	if FileExists(".env") {
+		err:=godotenv.Load() // Initialization env file
+		if err!=nil { log.Fatal("[FATAL Initialization package heartbot/accessbot]Not .env file.") }
+	}
 }
 
 // AllowedUser set status debug from env.
