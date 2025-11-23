@@ -18,9 +18,6 @@ func init() {
 // SetDebugBot set status debug from env.
 func SetDebugBot(bot *tgbotapi.BotAPI) {
 	// Realization
-	err:=godotenv.Load() // Initialization env file
-	if err!=nil { log.Fatal("[FATAL LocalHeartBot]Not .env file.") }
-
 	status:=false // Default status false
 	if	statusFromEnv:=os.Getenv("STATUS_DEBUG");statusFromEnv!="" {
 		parsed,err:=strconv.ParseBool(statusFromEnv)
