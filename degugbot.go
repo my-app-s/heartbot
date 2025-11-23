@@ -8,6 +8,13 @@ import (
 	"github.com/joho/godotenv" // For work getenv
 )
 
+func init() {
+	if FileExists(".env") {
+		err:=godotenv.Load() // Initialization env file
+		if err!=nil { log.Fatal("[FATAL Initialization package heartbot/degugbot]Not .env file.") }
+	}
+}
+
 // SetDebugBot set status debug from env.
 func SetDebugBot(bot *tgbotapi.BotAPI) {
 	// Realization
