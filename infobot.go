@@ -1,4 +1,4 @@
-package infobot
+package heartbot
 
 import (
     "fmt"
