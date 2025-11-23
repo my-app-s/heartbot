@@ -11,7 +11,7 @@ import (
 // FileExists check exists file .env.
 func FileExists(filename string) bool {
 	// Realization
-	info, err := os.Stat(filename)
+	_, err := os.Stat(filename)
 	if os.IsNotExist(err) {
 		return false
 	}
