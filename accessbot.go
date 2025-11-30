@@ -62,10 +62,10 @@ func CheckUserAccess(bot *tgbotapi.BotAPI,text string,chatID,ownerID,accessCode 
 		if text!=strconv.FormatInt(accessCode,10) {
 			bot.Send(tgbotapi.NewMessage(chatID,
 				"Sorry, this bot is restricted. "+
-				"Only the owner or users with an access code can continue. 🔒"+
-				"(Извините, бот доступен только владельцу или по коду доступа.)")) // Refact edit text убран смайлик
+				"🔒 Only the owner or users with an access code can continue."+
+				"(Извините, бот доступен только владельцу или по коду доступа.)"))
 			bot.Send(tgbotapi.NewMessage(chatID,
-				"Please enter your access code. 🔑(Введите код доступа):")) // Refact edit text убран смайлик
+				"👀 Please enter your access code.(Введите код доступа):"))
 			return false
 		} else {
 			bot.Send(tgbotapi.NewMessage(chatID, "Good enter code."))
