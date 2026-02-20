@@ -19,13 +19,6 @@ TZ=UTC
 
 ---
 
-## License
-
-This project is licensed under the **GNU General Public License v3.0 (GPLv3)**.  
-See the [LICENSE](LICENSE) file for full details.
-
----
-
 # General Disclaimer / Общий отказ от ответственности
 
 All repositories and code provided by my-app-s are provided **"as is"**, without any express or implied warranties.  
